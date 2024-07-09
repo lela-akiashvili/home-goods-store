@@ -1,0 +1,71 @@
+@use "variables" as *;
+@mixin min-sm {
+    @media (min-width: map-get($breakpoint, "sm")) {
+      @content;
+    }
+  }
+  @mixin sm {
+    @media (max-width: map-get($breakpoint, "sm")) {
+      @content;
+    }
+  }
+  @mixin md {
+    @media (min-width: map-get($breakpoint, "md")) {
+      @content;
+    }
+  }
+  @mixin lg {
+    @media (min-width: map-get($breakpoint, "lg")) {
+      @content;
+    }
+  }
+  @mixin x-lg {
+    @media (min-width: map-get($breakpoint, "x-lg")) {
+      @content;
+    }
+  }
+  @mixin xx-lg {
+    @media (min-width: map-get($breakpoint, "xx-lg")) {
+      @content;
+    }
+  }
+
+@mixin menu($duration: 0.5s, $timing-function: ease-in-out) { display: initial; 
+  @keyframes slideIn {
+    from {
+     
+      transform: translateX(100%);
+    }
+    to {
+       
+      transform: translateX(0%);
+    }
+  }
+
+  animation: slideIn $duration $timing-function;
+}
+@mixin burgerX($duration: 0.5s, $timing-function: ease-in-out) {
+  .top,
+  .mid,
+  .bot {
+    transition: all $duration $timing-function;
+  }
+
+  &.open {
+    .top {
+      transform: rotate(45deg) translate(50%, 50%);
+      padding: 0;
+      margin: 0;
+    }
+
+    .mid {
+      opacity: 0;
+      padding: 0;
+    }
+
+    .bot {
+      padding: 0;
+      transform: rotate(-45deg) translate(25%, -85%);
+    }
+  }
+}
